@@ -4,6 +4,9 @@ import math
 import sklearn.datasets
 import ipywidgets as widgets
 
+from IPython.display import display
+import pandas as pd
+
 ##Seaborn for fancy plots. 
 #%matplotlib inline
 import matplotlib.pyplot as plt
@@ -135,7 +138,7 @@ class edaDF:
         tab = widgets.Tab(children = [out1, out2, out3, out4, out5])
         tab.set_title(0, 'Info')
         tab.set_title(1, 'Categorical')
-        tab.set_title(2, 'Numerical')
+        tab.set_title(2, 'Numereeeical')
         tab.set_title(3, 'testing')
         tab.set_title(4, 'teswssting')
         display(tab)
