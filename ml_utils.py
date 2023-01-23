@@ -77,6 +77,9 @@ class edaDF:
     def info(self):
         return self.data.info()
 
+    def describe(self):
+        print(self.data.describe())
+
     def giveTarget(self):
         return self.target
         
@@ -139,12 +142,13 @@ class edaDF:
         tab.set_title(2, 'Numerical')
         tab.set_title(3, 'Pairplot')
         tab.set_title(4, 'Correlation Matrix')
-        tab.set_title(5, 'Balance')
+        tab.set_title(5, 'Descriptive Statistics')
+        tab.set_title(333, 'Balance')
+
         display(tab)
 
         with out1:
             self.info()
-            print('obiwan kenobi')
 
         with out2:
             fig2 = self.countPlots(splitTarg=True, show=False)
@@ -155,5 +159,13 @@ class edaDF:
             plt.show(fig3)
 
         with out4:
-            fig4 = sns.pairplot(self.data)
-            plt.show(fig4)
+            print('blank')
+            #fig4 = sns.pairplot(self.data)
+            #plt.show(fig4)
+
+        with out5:
+            fig5 = sns.heatmap(self.data.corr(), annot=True)
+            plt.show(fig5)
+            
+        with out6:
+            self.describe()
