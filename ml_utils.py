@@ -137,6 +137,7 @@ class edaDF:
         tab.set_title(1, 'Categorical')
         tab.set_title(2, 'Numerical')
         tab.set_title(3, 'testing')
+        tab.set_title(4, 'teswssting')
         display(tab)
 
         with out1:
