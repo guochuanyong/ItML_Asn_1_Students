@@ -4,14 +4,11 @@ import math
 import sklearn.datasets
 import ipywidgets as widgets
 
-from IPython.display import display
-import pandas as pd
-
 ##Seaborn for fancy plots. 
 #%matplotlib inline
 import matplotlib.pyplot as plt
 import seaborn as sns
-plt.rcParams["figure.figsize"] = (8,8)
+plt.rcParams["figure.figsize"] = (10,10)
 
 class edaDF:
     """
@@ -134,17 +131,20 @@ class edaDF:
         out3 = widgets.Output()
         out4 = widgets.Output()
         out5 = widgets.Output()
+        out6 = widgets.Output()
 
-        tab = widgets.Tab(children = [out1, out2, out3, out4, out5])
-        tab.set_title(0, 'Iexcnfo')
-        tab.set_title(1, 'Categoriwewcal')
-        tab.set_title(2, 'Numereeeical')
-        tab.set_title(3, 'testing')
-        tab.set_title(4, 'teswssting')
+        tab = widgets.Tab(children = [out1, out2, out3, out4, out5, out6])
+        tab.set_title(0, 'Info')
+        tab.set_title(1, 'Categorical')
+        tab.set_title(2, 'Numerical')
+        tab.set_title(3, 'Pairplot')
+        tab.set_title(4, 'Correlation Matrix')
+        tab.set_title(5, 'Balance')
         display(tab)
 
         with out1:
             self.info()
+            print('obiwan kenobi')
 
         with out2:
             fig2 = self.countPlots(splitTarg=True, show=False)
@@ -155,5 +155,5 @@ class edaDF:
             plt.show(fig3)
 
         with out4:
-            fig4 = self.histPlots(kde=True, show=False)
+            fig4 = sns.pairplot(self.data)
             plt.show(fig4)
