@@ -79,6 +79,9 @@ class edaDF:
 
     def describe(self):
         print(self.data.describe())
+    
+    def isna(self):
+        print(self.data.isna().sum())
 
     def giveTarget(self):
         return self.target
@@ -135,15 +138,18 @@ class edaDF:
         out4 = widgets.Output()
         out5 = widgets.Output()
         out6 = widgets.Output()
+        out7 = widgets.Output()
+        out8 = widgets.Output()
 
-        tab = widgets.Tab(children = [out1, out2, out3, out4, out5, out6])
+        tab = widgets.Tab(children = [out1, out2, out3, out4, out5, out6, out7, out8])
         tab.set_title(0, 'Info')
         tab.set_title(1, 'Categorical')
         tab.set_title(2, 'Numerical')
-        tab.set_title(3, 'Pairplot')
+        tab.set_title(3, 'Pairplot/Outliers')
         tab.set_title(4, 'Correlation Matrix')
         tab.set_title(5, 'Descriptive Statistics')
-        tab.set_title(333, 'Balance')
+        tab.set_title(6, 'Missing Values')
+        tab.set_title(7, 'Target Balance')
 
         display(tab)
 
@@ -159,9 +165,9 @@ class edaDF:
             plt.show(fig3)
 
         with out4:
-            print('blank')
-            #fig4 = sns.pairplot(self.data)
-            #plt.show(fig4)
+    
+            fig4 = sns.pairplot(self.data)
+            plt.show(fig4)
 
         with out5:
             fig5 = sns.heatmap(self.data.corr(), annot=True)
@@ -169,3 +175,12 @@ class edaDF:
             
         with out6:
             self.describe()
+
+        with out7:
+            print('Count of null values for each feature.\n\n')
+            self.isna()
+
+        with out8:
+            print('Count of samples for categorical target, used to determine if there is inbalance in the data.\n\n')
+            fig8 = sns.countplot(data = self.data, x = self.target)
+            plt.show(fig8)
