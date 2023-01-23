@@ -130,11 +130,13 @@ class edaDF:
         out2 = widgets.Output()
         out3 = widgets.Output()
         out4 = widgets.Output()
+        out5 = widgets.Output()
 
-        tab = widgets.Tab(children = [out1, out2, out3])
+        tab = widgets.Tab(children = [out1, out2, out3, out4, out5])
         tab.set_title(0, 'Info')
         tab.set_title(1, 'Categorical')
         tab.set_title(2, 'Numerical')
+        tab.set_title(3, 'testing')
         display(tab)
 
         with out1:
@@ -147,3 +149,7 @@ class edaDF:
         with out3:
             fig3 = self.histPlots(kde=True, show=False)
             plt.show(fig3)
+
+        with out4:
+            fig4 = self.histPlots(kde=True, show=False)
+            plt.show(fig4)
